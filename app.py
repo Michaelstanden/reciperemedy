@@ -2,6 +2,7 @@ import os
 import flask_pymongo
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
+import math
 from bson.objectid import ObjectId
 from os import path
 if path.exists("env.py"):
@@ -35,7 +36,7 @@ def get_recipes():
 
     skip = (page_number - 1) * limit
 
-    # skip relevant number of jobs
+    # skip relevant number of recipes
 
     recipe.skip(skip).limit(limit)
 
@@ -46,7 +47,9 @@ def get_recipes():
     # create a page range
 
     total_pages = range(1, pages + 1)
-    return render_template(('recipe.html', page_number, total_pages, count)
+    return render_template('recipe.html', recipe=recipe,
+                           page_number=page_number, pages=total_pages,
+                           count=count)
 
 
 @app.route('/')
