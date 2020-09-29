@@ -1,4 +1,78 @@
 {% extends 'base.html'%}
 {% block content %}
 <h1>Heading for breakfast</h1>
+
+</div>
+{% for recipes in recipe %}
+<!--RECIPE DETAILS(snippet of recipe on cards, full description in recipe.html)-->
+<div class="container">
+    <div class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col-md-4 card-img">
+                <img src="{{recipe.image_url}}" class="card-img" alt="Example of recipe outcome." />
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <a href="{{url_for('breakfast.html', recipe_id=recipe._id)}}"><h4>{{recipe.recipe_name}}</h4></a>
+                    <h5 class="card-title">{{recipe.recipe_description}}</h5>
+                    <h6 class="card-title"><i class="material-icons prefix">cooking_time</i>{{recipe.cooking_time}}</h6>
+                    <h6 class="card-title"><i class="material-icons prefix">prep_time</i>{{recipe.prep_time}}</h6>
+                    <h6 class="card-title"><i class="material-icons prefix">ingredients</i>{{recipe.ingredients}}</h6>
+                    <h6 class="card-title"><i class="material-icons prefix">date_posted</i>{{recipe.posted_date}}</h6>
+                        <a href="{{url_for('apply')}}" class="mr-3 text-decoration-none waves-effect waves-light btn">
+                                Apply
+                                <i class="material-icons right">send</i>
+                        </a>
+                        <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="mr-3 text-decoration-none waves-effect waves-light btn">
+                                Edit Recipe
+                                <i class="material-icons right">mode_edit</i>
+                        </a>
+                        <button class="waves-effect waves-light btn" type="button" name="action" data-toggle="modal" data-target="#staticBackdrop">
+                            Delete Recipe
+                            <i class="material-icons right">delete</i>
+                        </button>
+                        <!--DELETE JOB MODAL-->
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel"><i class="material-icons left">warning</i>Delete Recipe</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Are you sure you want to delete this recipe?</h6>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="btns btn-danger text-decoration-none">
+                                        <i class="material-icons left">delete</i>Delete
+                                        </a>
+                                        <button type="cancel" class="btn btn-secondary" data-dismiss="modal"><i class="material-icons left">cancel</i>Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endfor %}
+<!--PAGINATION-->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+        <ul class="pagination justify-content-center">
+    {% for page in pages %}
+            {% if page == page_number %}
+            <li class="active green"><a href="#!">{{ page }}</a></li>
+            {% else %}
+            <li class="waves-effect"><a href="{{ url_for('recipe', page_number=page) }}">{{ page }}</a></li>
+            {% endif %}
+        {% endfor %}  
+  </ul>
+        </div>
+    </div>
+</div> 
 {% endblock %}

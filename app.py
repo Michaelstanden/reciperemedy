@@ -18,7 +18,35 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_recipes')
 def get_recipes():
-    return render_template("recipe.html", recipes=mongo.db.Recipes.find())
+ # Find all recipes in Mongo DB
+
+    recipe = mongo.db.recipe.find().sort("_id", -1)
+
+    # Pagination variable
+
+    limit = 5
+
+    # Find the requested page number (or default to page 1)
+
+    page_number = int(request.args.get('page_number', 1))
+    count = mongo.db.recipe.count_documents({})
+
+    # identify how many recipe records to be skipped based on page number
+
+    skip = (page_number - 1) * limit
+
+    # skip relevant number of jobs
+
+    recipe.skip(skip).limit(limit)
+
+    # identify how many pages of results are needed
+
+    pages = int(math.ceil(count / limit))
+
+    # create a page range
+
+    total_pages = range(1, pages + 1)
+    return render_template(('recipe.html', page_number, total_pages, count)
 
 
 @app.route('/')
