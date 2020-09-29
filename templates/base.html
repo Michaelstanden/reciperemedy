@@ -19,10 +19,10 @@
                     <ul class="right hide-on-med-and-down mr-3" id="navigation">
                         <li><a href="{{ url_for('index') }}">Home</a></li>
                         <li><a href="{{ url_for('breakfast') }}">Breakfast</a></li>
-                        <li><a href="">Dinner</a></li>
-                        <li><a href="">Desserts</a></li>
-                        <li><a href="">Add recipe</a></li>
-                        <li><a href="">Edit recipe</a></li>
+                        <li><a href="{{ url_for('lunch') }}">Dinner</a></li>
+                        <li><a href="{{ url_for('dessert') }}">Desserts</a></li>
+                        <li><a href="{{ url_for('add_recipe') }}">Add recipe</a></li>
+                        <li><a href="{{ url_for('edit_recipe') }}">Edit recipe</a></li>
                         <li class="contact-us"><a href="">Contact Us</a></li>
                     </ul>
                 </div>
@@ -31,8 +31,8 @@
             <ul class="sidenav" id="mobile-demo">
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('breakfast') }}">Breakfast</a></li>
-                <li><a href="">Lunch/ Dinner</a></li>
-                <li><a href="">Desserts</a></li>
+                <li><a href="{{ url_for('lunch') }}">Lunch/ Dinner</a></li>
+                <li><a href="{{ url_for('dessert') }}">Desserts</a></li>
                 <li><a href="">Contact Us</a></li>
             </ul>
 </header>
