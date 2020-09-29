@@ -31,6 +31,26 @@ def index():
 def breakfast():
     return render_template('breakfast.html')
 
+
+@app.route('/lunch')
+def lunch():
+    return render_template('lunch.html')
+
+
+@app.route('/dessert')
+def dessert():
+    return render_template('dessert.html')
+
+
+@app.route('/add_recipe')
+def add_recipe():
+    return render_template('add_recipe.html')
+
+
+@app.route('/edit_recipe')
+def edit_recipe():
+    return render_template('edit_recipe.html')
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
