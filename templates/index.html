@@ -11,10 +11,10 @@
                 a hearty sit down.</h2>
                 <div class="btns">
                 <a href="{{ url_for('breakfast') }}" class="btn-info landing-btn text-decoration-none">Breakfast</a>
-                <a href="" class="btn-info landing-btn text-decoration-none">Lunch/ Dinner</a>
-                <a href="" class="btn-info landing-btn text-decoration-none">Dessert</a>
-                <a href="" class="btn-info landing-btn text-decoration-none">Edit a recipe</a>
-				<a href="" class="btn-info landing-btn text-decoration-none">Add Your Own!</a>
+                <a href="{{ url_for('lunch') }}" class="btn-info landing-btn text-decoration-none">Lunch/ Dinner</a>
+                <a href="{{ url_for('dessert') }}" class="btn-info landing-btn text-decoration-none">Dessert</a>
+                <a href="{{ url_for('edit_recipe') }}" class="btn-info landing-btn text-decoration-none">Edit a recipe</a>
+				<a href="{{ url_for('add_recipe') }}" class="btn-info landing-btn text-decoration-none">Add Your Own!</a>
                 </div>
 			</div>
 		</div>
