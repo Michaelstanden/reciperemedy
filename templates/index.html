@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<!--LANDING PAGE-->
+<body>
+	<div class="container-fluid hero-image landing-page">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1 class="landing-text">Recipe Remedy</h1>
+                <h2 class="landing-text mb-4">Find recipes for any meal. Whether that be quick meals after a busy day or 
+                a hearty sit down.</h2>
+                <div class="btns">
+                <a href="{{ url_for('breakfast') }}" class="btn-info landing-btn text-decoration-none">Breakfast</a>
+                <a href="" class="btn-info landing-btn text-decoration-none">Lunch/ Dinner</a>
+                <a href="" class="btn-info landing-btn text-decoration-none">Dessert</a>
+                <a href="" class="btn-info landing-btn text-decoration-none">Edit a recipe</a>
+				<a href="" class="btn-info landing-btn text-decoration-none">Add Your Own!</a>
+                </div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}
